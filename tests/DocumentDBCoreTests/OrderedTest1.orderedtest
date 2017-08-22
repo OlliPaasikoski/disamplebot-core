@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="orderedtest1" storage="c:\dev\_luis\_basic\tests\documentdbcoretests\orderedtest1.orderedtest" id="b6ce51db-3841-43dd-acdc-7d7420c1e93a" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="f2ead861-3476-3e3f-3220-8a6263d2e769" name="ConnectionToDocumentDBSucceeds" storage="bin\debug\documentdbcoretests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="e648d812-3733-a4e8-4b81-bc4cf912c380" name="CreateDocumentTodoItemDoesNotFail" storage="bin\debug\documentdbcoretests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="92c79b27-69db-8ff6-99fb-0c6217231d37" name="GetDocumentByIdReturnsItemWithCorrectIdAndContents" storage="bin\debug\documentdbcoretests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="7b75d70a-dd33-acb3-3e8c-19a2f008c5b2" name="GetDocumentByDocumentLinkReturnsItemWithCorrectIdAndContents" storage="bin\debug\documentdbcoretests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="70a3c96c-12f0-e8cd-ca71-b94fd011526f" name="DeleteDocumentWithIdAsParameterSucceeds" storage="bin\debug\documentdbcoretests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

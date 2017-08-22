@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="DocumentDBCoreTests.DocumentDBTests.ConnectionToDocumentDBSucceeds" /><Add Test="DocumentDBCoreTests.DocumentDBTests.CreateDocumentWithTodoItemAsParameterSucceeds" /></Playlist>
