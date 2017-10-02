@@ -143,6 +143,7 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\ISearchService.cs" />
+    <Compile Include="Services\ServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

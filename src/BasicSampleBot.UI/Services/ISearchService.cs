@@ -9,22 +9,43 @@
 
     public class SearchService : ISearchService
     {
-        private CRMSearchRepository _crmSearchRepository;
+        CRMSearchRepository<CustomerEntity> _customerSearchRepository;
+        CRMSearchRepository<ProductEntity> _productSearchRepository;
 
         public SearchService()
         {
-            _crmSearchRepository = new CRMSearchRepository();
+            _customerSearchRepository = new CRMSearchRepository<CustomerEntity>();
+            _productSearchRepository = new CRMSearchRepository<ProductEntity>();
             AutomapperConfiguration.Configure();
         }
 
-        public async Task<IEnumerable<CRMSearchDto>> GetSearchResults(string searchTerm)
+        public async Task<IEnumerable<CustomerSearchDto>> CustomerLookup(string searchTerm)
         {
-            var searchResults = await _crmSearchRepository.BasicSearch(searchTerm);
-            IList<CRMSearchDto> retval = new List<CRMSearchDto>();
+            var searchResults = await _customerSearchRepository.Search(searchTerm);
+            IList<CustomerSearchDto> retval = new List<CustomerSearchDto>();
 
-            foreach (SearchResult<CRMSearchEntity> result in searchResults.Results)
+            foreach (SearchResult<CustomerEntity> result in searchResults.Results)
             {
-                retval.Add(Mapper.Map<CRMSearchDto>(result.Document));
+                if (result.Score > 1.5)
+                {
+                    retval.Add(Mapper.Map<CustomerSearchDto>(result.Document));
+                }           
+            }
+
+            return retval;
+        }
+
+        public async Task<IEnumerable<ProductSearchDto>> ProductLookup(string searchTerm)
+        {
+            var searchResults = await _productSearchRepository.Search(searchTerm);
+            IList<ProductSearchDto> retval = new List<ProductSearchDto>();
+
+            foreach (SearchResult<ProductEntity> result in searchResults.Results)
+            {
+                if (result.Score > 1.5)
+                {
+                    retval.Add(Mapper.Map<ProductSearchDto>(result.Document));
+                }          
             }
 
             return retval;
@@ -33,6 +54,7 @@
 
     public interface ISearchService
     {
-        Task<IEnumerable<CRMSearchDto>> GetSearchResults(string searchTerm);
+        Task<IEnumerable<CustomerSearchDto>> CustomerLookup(string searchTerm);
+        Task<IEnumerable<ProductSearchDto>> ProductLookup(string searchTerm);
     }
 }

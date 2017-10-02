@@ -11,34 +11,32 @@ using System.Threading.Tasks;
 
 namespace BasicSampleBot.SearchApi.Services
 {
-    public class CRMSearchRepository : ICRMSearchRepository
+    public static class SearchIndexes
+    {
+        public const string Customers = "customerindex";
+        public const string Products = "productindex";
+    }
+
+    public class CRMSearchRepository<T> : ICRMSearchRepository where T : SearchEntity
     {
         // should be read-only
         SearchIndexClient _searchClient = null;
-        const string CRMIndexName = "crmindex";
 
         public CRMSearchRepository()
         {
+            var indexName = (typeof(T) == typeof(CustomerEntity)) ? SearchIndexes.Customers : SearchIndexes.Products;
+
             // The ctor depends on config values, the service could be dependency injected but who knows
             _searchClient = new SearchIndexClient(
                 ConfigurationManager.AppSettings["SearchServiceName"],
-                CRMIndexName,
+                indexName,
                 new SearchCredentials(ConfigurationManager.AppSettings["SearchServiceQueryApiKey"]));
         }
 
-        public async Task<DocumentSearchResult<CRMSearchEntity>> BasicSearch(string term)
+        public async Task<DocumentSearchResult<T>> Search(string term)
         {
-            SearchParameters parameters;
-            DocumentSearchResult<CRMSearchEntity> results;
-
-            parameters = new SearchParameters();
-
-            results = await _searchClient.Documents.SearchAsync<CRMSearchEntity>(term);
-            foreach (SearchResult<CRMSearchEntity> result in results.Results)
-            {
-                Trace.WriteLine(result.Document);
-            }
-            return results;
+            SearchParameters parameters = new SearchParameters(); // not used
+            return await _searchClient.Documents.SearchAsync<T>(term);
         }
 
     }

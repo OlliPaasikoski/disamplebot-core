@@ -18,12 +18,13 @@
         {
 			// CRM entity to person
 			// Person to person dto
-            CreateMap<CRMSearchEntity, CRMSearchDto>();
-			// CRM entity to company
-			// Company to company dto
+            CreateMap<CustomerEntity, CustomerSearchDto>();
+            CreateMap<ProductEntity, ProductSearchDto>();
+            // CRM entity to company
+            // Company to company dto
 
-			// Todo to create to todo entity
-			// Todo entity to todo dto
+            // Todo to create to todo entity
+            // Todo entity to todo dto
         }
 
         public override string ProfileName

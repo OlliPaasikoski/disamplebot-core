@@ -2,11 +2,6 @@
 {
     using BasicSampleBot.UI;
     using System.Linq;
-    public static class ServiceFactory
-    {
-        //public static ICustomerService CustomerData = new CustomerService();
-        public static ISearchService SearchData = new SearchService();
-    }
 
     //public class CustomerService : ICustomerService
     //{
